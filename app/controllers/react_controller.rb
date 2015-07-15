@@ -1,4 +1,7 @@
 class ReactController < ApplicationController
-  def index
+  def avatar
+  end
+
+  def increment_button
   end
 end

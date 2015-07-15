@@ -19,20 +19,25 @@
             
 @Form = React.createClass
 
+    getInitialState: ->
+      value: ''
+
+    handleChange: (e) ->
+      @setState value: e.target.value
+
     handleSubmit: (e) ->
         e.preventDefault()
-        loginInput = React.findDOMNode(@refs.login)
-        @props.addCardInfo(loginInput.value)
-        loginInput.value = ''
+        @props.addCardInfo(@state.value)
+        @state.value = ''
         
 
     render: ->
         React.DOM.form
-            key: @refs.login
             onSubmit: @handleSubmit
             React.DOM.input
                 placeholder: "github login"
-                ref: "login"
+                value: @state.value
+                onChange: @handleChange
             React.DOM.button null,
                 'Add'
     
